@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEURALIS TECHFEST 2026 — Where Ambition Meets Machine Intelligence</title>
+<meta name="description" content="NEURALIS TECHFEST 2026. 48 hours. 6 tracks. One neural grid. Register now.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <div class="boot-lines" id="boot-lines"></div>
+  <div class="boot-bar-track"><div class="boot-bar-fill" id="boot-bar-fill"></div></div>
+  <div class="boot-pct" id="boot-pct">0%</div>
+</div>
+
+<!-- ============ 3D CANVAS (fixed background) ============ -->
+<canvas id="webgl"></canvas>
+<div class="grid-overlay"></div>
+<div class="vignette"></div>
+
+<!-- ============ NAV ============ -->
+<header id="navbar">
+  <a href="#hero" class="logo"><span class="logo-accent">//</span>NEURALIS<span class="logo-sub">TECHFEST</span></a>
+  <nav id="nav-menu">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#tracks" class="nav-link">Tracks</a>
+    <a href="#timeline" class="nav-link">Timeline</a>
+    <a href="#speakers" class="nav-link">Speakers</a>
+    <a href="#register" class="nav-link nav-cta">Register</a>
+  </nav>
+  <button id="menu-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge" id="hero-badge"><span class="blink-dot"></span> GRID STATUS: ONLINE — 14–16 AUG 2026</div>
+      <h1 class="hero-title">
+        <span class="line">NEURALIS</span>
+        <span class="line accent">TECHFEST</span>
+        <span class="line small">// 2026</span>
+      </h1>
+      <p class="hero-sub">Forty-eight hours. Six tracks. One neural grid. The line between builder and machine dissolves for one weekend a year — this is that weekend.</p>
+      <div class="hero-cta-row">
+        <a href="#register" class="btn btn-primary">Initialize Registration</a>
+        <a href="#tracks" class="btn btn-ghost">Explore Tracks <i class="fa-solid fa-arrow-down"></i></a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-num" data-count="1000000" data-prefix="₹">0</span><span class="hstat-label">Prize Pool</span></div>
+        <div class="hstat"><span class="hstat-num" data-count="5000" data-suffix="+">0</span><span class="hstat-label">Participants</span></div>
+        <div class="hstat"><span class="hstat-num" data-count="120" data-suffix="+">0</span><span class="hstat-label">Colleges</span></div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span></span>SCROLL TO SYNC</div>
+  </section>
+
+  <!-- ============ ABOUT / CORE ============ -->
+  <section id="about">
+    <div class="section-shell">
+      <div class="eyebrow"><span class="eyebrow-tag">01</span> THE CORE</div>
+      <div class="about-grid">
+        <div class="about-text reveal-up">
+          <h2>A festival built like<br>a <span class="accent">nervous system.</span></h2>
+          <p>NEURALIS TECHFEST isn't a stage with sponsor banners. It's a live grid — six competition tracks running in parallel, feeding one shared network of builders, judges, and mentors, for 48 hours straight.</p>
+          <p>The core you see drifting behind this page is the same one that governs check-in, judging, and the live leaderboard. Everything on the ground floor ties back to it.</p>
+          <div class="about-figures">
+            <div><span class="fig">48</span><label>Hours non-stop</label></div>
+            <div><span class="fig">6</span><label>Live tracks</label></div>
+            <div><span class="fig">03</span><label>Days on campus</label></div>
+          </div>
+        </div>
+        <div class="about-portrait reveal-up">
+          <img src="assets/cyborg_hero.png" alt="NEURALIS Cyborg Core Chassis — TECHFEST 2026 mascot" loading="lazy">
+          <div class="portrait-tag mono">NEURALIS UNIT-07 // TECHFEST AMBASSADOR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACKS ============ -->
+  <section id="tracks">
+    <div class="section-shell">
+      <div class="eyebrow"><span class="eyebrow-tag">02</span> COMPETITION TRACKS</div>
+      <h2 class="reveal-up">Pick a track.<br>The grid remembers everything.</h2>
+      <p class="section-lede reveal-up">Six independent arenas. Tilt each node to read its brief — drag your cursor across the grid.</p>
+
+      <div class="tracks-grid" id="tracks-grid">
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-01</span>
+          <i class="fa-solid fa-brain track-icon"></i>
+          <h3>AI // COGNITION</h3>
+          <p>Build a model that reasons, not just predicts. Open dataset, open ceiling.</p>
+          <span class="track-meta mono">TEAM 2–4 · 48HR</span>
+        </article>
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-02</span>
+          <i class="fa-solid fa-robot track-icon"></i>
+          <h3>ROBOTIX // CHASSIS</h3>
+          <p>Autonomous bots navigate a live obstacle grid. Sensors on, hands off.</p>
+          <span class="track-meta mono">TEAM 2–5 · ON-SITE</span>
+        </article>
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-03</span>
+          <i class="fa-solid fa-shield-halved track-icon"></i>
+          <h3>NET // BREACH</h3>
+          <p>Capture-the-flag across a simulated corp network. Break it, patch it, win it.</p>
+          <span class="track-meta mono">SOLO/DUO · 48HR</span>
+        </article>
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-04</span>
+          <i class="fa-solid fa-link track-icon"></i>
+          <h3>CHAIN // LEDGER</h3>
+          <p>Ship a working smart-contract product judges can actually break.</p>
+          <span class="track-meta mono">TEAM 2–4 · 48HR</span>
+        </article>
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-05</span>
+          <i class="fa-solid fa-gamepad track-icon"></i>
+          <h3>PIXEL // ARENA</h3>
+          <p>A game jam with a twist theme revealed at kickoff. Playable build or nothing.</p>
+          <span class="track-meta mono">TEAM 1–4 · 36HR</span>
+        </article>
+        <article class="track-card" data-tilt>
+          <div class="track-glow"></div>
+          <span class="track-id mono">N-06</span>
+          <i class="fa-solid fa-microchip track-icon"></i>
+          <h3>CIRCUIT // DESIGN</h3>
+          <p>Hardware + IoT build track. Bring a breadboard, leave with a working prototype.</p>
+          <span class="track-meta mono">TEAM 2–4 · ON-SITE</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section id="timeline">
+    <div class="section-shell">
+      <div class="eyebrow"><span class="eyebrow-tag">03</span> RUN OF SHOW</div>
+      <h2 class="reveal-up">Three days.<br>One continuous signal.</h2>
+
+      <div class="timeline-track" id="timeline-track">
+        <div class="timeline-item reveal-side" data-side="left">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <span class="tl-day mono">DAY 01 · 09:00</span>
+            <h4>Grid Sync — Check-in &amp; Kickoff</h4>
+            <p>Badges go live, teams form, tracks are briefed. Opening keynote at 18:00.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal-side" data-side="right">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <span class="tl-day mono">DAY 01 · 20:00</span>
+            <h4>Build Windows Open</h4>
+            <p>All six tracks go live simultaneously. The 48-hour clock starts here.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal-side" data-side="left">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <span class="tl-day mono">DAY 02 · ALL DAY</span>
+            <h4>Mentor Rounds &amp; Workshops</h4>
+            <p>Rotating mentor check-ins on the hour, plus parallel workshop tracks in Hall B.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal-side" data-side="right">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <span class="tl-day mono">DAY 03 · 21:00</span>
+            <h4>Submission Lock</h4>
+            <p>All builds freeze. Judging pods open across every track in parallel.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal-side" data-side="left">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <span class="tl-day mono">DAY 03 · 23:30</span>
+            <h4>Closing Ceremony &amp; Prize Drop</h4>
+            <p>Live leaderboard reveal, track winners, and the ₹10L+ prize pool distribution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPEAKERS ============ -->
+  <section id="speakers">
+    <div class="section-shell">
+      <div class="eyebrow"><span class="eyebrow-tag">04</span> ON THE GRID</div>
+      <h2 class="reveal-up">Judges &amp; mentors<br>who've shipped the real thing.</h2>
+      <div class="speakers-grid">
+        <div class="speaker-card reveal-up">
+          <div class="speaker-avatar" style="--hue:190;"><i class="fa-solid fa-user-astronaut"></i></div>
+          <h4>Dr. Aria Voss</h4>
+          <span class="mono">Lead, Applied Cognition Lab</span>
+        </div>
+        <div class="speaker-card reveal-up">
+          <div class="speaker-avatar" style="--hue:280;"><i class="fa-solid fa-user-astronaut"></i></div>
+          <h4>Rohan Kade</h4>
+          <span class="mono">Principal Engineer, Robotics</span>
+        </div>
+        <div class="speaker-card reveal-up">
+          <div class="speaker-avatar" style="--hue:25;"><i class="fa-solid fa-user-astronaut"></i></div>
+          <h4>Mira Okoye</h4>
+          <span class="mono">Security Researcher</span>
+        </div>
+        <div class="speaker-card reveal-up">
+          <div class="speaker-avatar" style="--hue:190;"><i class="fa-solid fa-user-astronaut"></i></div>
+          <h4>Kenji Arata</h4>
+          <span class="mono">Founder, ChainForge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPONSORS MARQUEE ============ -->
+  <section id="sponsors">
+    <div class="eyebrow center"><span class="eyebrow-tag">05</span> GRID PARTNERS</div>
+    <div class="marquee">
+      <div class="marquee-track" id="marquee-track">
+        <span>VORTECH</span><span>ORBIS LABS</span><span>ARCLIGHT</span><span>SYNTH DYNAMICS</span><span>HALCYON</span><span>NOVACORE</span>
+        <span>VORTECH</span><span>ORBIS LABS</span><span>ARCLIGHT</span><span>SYNTH DYNAMICS</span><span>HALCYON</span><span>NOVACORE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REGISTER ============ -->
+  <section id="register">
+    <div class="section-shell register-shell">
+      <div class="eyebrow"><span class="eyebrow-tag">06</span> JOIN THE GRID</div>
+      <h2 class="reveal-up">Registration closes when<br>the grid says so, not us.</h2>
+      <p class="section-lede reveal-up">Seats are capped per track. Confirmed teams get grid access 48 hours before kickoff.</p>
+
+      <form class="terminal-form reveal-up" id="reg-form">
+        <div class="terminal-form-head mono">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span>NEURALIS REGISTRATION TERMINAL v2.6</span>
+        </div>
+        <div class="terminal-form-body">
+          <label class="mono" for="reg-name">FULL_NAME</label>
+          <input type="text" id="reg-name" placeholder="Jordan Vega" required>
+
+          <label class="mono" for="reg-email">EMAIL</label>
+          <input type="email" id="reg-email" placeholder="you@campus.edu" required>
+
+          <label class="mono" for="reg-college">COLLEGE / ORG</label>
+          <input type="text" id="reg-college" placeholder="Institute name" required>
+
+          <label class="mono" for="reg-track">TRACK_SELECT</label>
+          <select id="reg-track" required>
+            <option value="">— choose a track —</option>
+            <option>N-01 AI // COGNITION</option>
+            <option>N-02 ROBOTIX // CHASSIS</option>
+            <option>N-03 NET // BREACH</option>
+            <option>N-04 CHAIN // LEDGER</option>
+            <option>N-05 PIXEL // ARENA</option>
+            <option>N-06 CIRCUIT // DESIGN</option>
+          </select>
+
+          <button type="submit" class="btn btn-primary full"><i class="fa-solid fa-bolt"></i> Initialize Registration</button>
+          <p class="form-status mono" id="form-status">&gt; awaiting input...</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#hero" class="logo"><span class="logo-accent">//</span>NEURALIS<span class="logo-sub">TECHFEST</span></a>
+      <p class="brand-tagline">Where ambition meets machine intelligence. One weekend, one grid, six tracks.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="#" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h5 class="mono">EVENT</h5>
+        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#timeline">Timeline</a>
+      </div>
+      <div>
+        <h5 class="mono">GRID</h5>
+        <a href="#speakers">Judges</a>
+        <a href="#sponsors">Partners</a>
+        <a href="#register">Register</a>
+      </div>
+    </div>
+  </div>
+  <p class="copyright mono">&copy; 2026 NEURALIS TECHFEST. All systems operational. Graphene-Class secure shielding active.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
